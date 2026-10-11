@@ -1,73 +1,47 @@
-# WebApp Template with React JS
+# Star Wars Blog
 
+[English](README.md) | [Español](README.es.md)
 
-Used by 4Geeks.com and 4Geeks Academy students, this template helps to bootstrap your first multi-page web applications by integrating with React latest version, vercel deployments and [Vite](https://4geeks.com/lesson/intro-to-vite-module-bundler) for bundling.
+A frontend exercise for 4Geeks Academy, built with React, Bootstrap 5, React Router and Context API with useReducer. No backend or API key is required.
 
-### Getting stated:
+## Features
 
-> 📦 Make sure you are using at least node version 20.
+- Lists the first 10 characters, planets and vehicles from SWAPI.tech.
+- Cards with images, basic information and a link to each resource's details.
+- Details with related resource names instead of API links.
+- Global favorites: add or remove items from cards, details and the navbar.
+- Responsive dark interface with a light navbar and English text.
+- Loading and error messages, plus a fallback for unavailable images.
 
-1. Install the node package dependencies by typing: `$ npm install`
+Favorites are kept in memory and reset when the page is reloaded. Search and persistent favorites are outside this exercise's scope.
 
-2. Create a .env file by typing `$ cp .env.example .env`
+## Run locally
 
-3. Start coding! and the vite dev server with live reload by typing: `$ npm run start`
+Use Node.js 20 or newer.
 
-
-### Styling
-
-You can update the `./index.css` or create new `.css` files and import them into your current css or js files depending on your needs.
-
-### Components
-
-Add more files into your `./src/components` or styles folder as you need them and import them into your current files as needed.
-
-💡Note: There is an example using the Context API inside `pages/demo.js`;
-
-### Pages
-
-Add more files into your `./js/pages` and import them in `./routes.jsx`.
-Each page must match at least one route inside `routes.jsx`
-
-### Centralized Store with useReducer
-
-This template comes with a centralized & general state that's shared with all pages and compoentes, we call it "the store".   
-
-The file `./src/store.js` has a default structure for the store, we encourage you to change it and adapt it to your data needs (for example, if you are doing a `Todo list` you will probably have a array of todos here).
-
-+ Learn [how the useReducer works](https://4geeks.com/lesson/optimize-react-components-usereducer).
-+ Read more about [implementing a global state with Context API](https://4geeks.com/lesson/context-api)
-+ Read more about [react hooks](https://content.breatheco.de/lesson/react-hooks-explained)
-
-The store `Provider` for this context is already set on `./src/main.jsx`. You can access the store from any component using the `useGlobalReducer` hook to get the `store` and `dispatcher`. Check `/views/demo.js` to see a demo. Here is a smaller sample:
-
-```jsx
-import useGlobalReducer from "./src/hooks/useGlobalReducer";
-
-const MyComponentSuper = () => {
-  //here you use the hook to get dispatcher and store
-  import { dispatch, store } = useGlobalReducer();
-
-  return <div>{/* you can use your actions or store inside the html */}</div>
-}
-```
-
-## Publish your website!
-
-1. **Vercel:** The FREE recomended hosting provider is [vercel.com](https://vercel.com/), you can deploy in 1 minutes by typing the following 2 commands:
-
-Login (you need to have an account):
 ```sh
-$ npm i vercel -g && vercel login
+npm install
+npm run start
 ```
-Deploy:
+
+Open the local address printed by Vite (normally http://localhost:3000). No .env file is needed.
+
 ```sh
-$ vercel --prod
+npm run lint
+npm run build
+npm run preview
 ```
-✎ Note: If you don't have an account just go to vercel.com, create a account and come back here.
 
-![Vercel example procedure to deploy](https://github.com/4GeeksAcademy/react-hello-webapp/blob/4b530ba091a981d3916cc6e960e370decaf2e234/docs/deploy.png?raw=true)
+The build is generated in `dist`. Production hosting must serve `index.html` for frontend routes such as `/details/people/1`.
 
-## Contributors
+## Data and images
 
-This template was built as part of the 4Geeks Academy [Coding Bootcamp](https://4geeksacademy.com/us/coding-bootcamp) by [Alejandro Sanchez](https://twitter.com/alesanchezr) and many other contributors. Find out more about our [Full Stack Developer Course](https://4geeksacademy.com/us/coding-bootcamps/part-time-full-stack-developer), [Data Science Bootcamp](https://4geeksacademy.com/us/coding-bootcamps/datascience-machine-learning) and [CyberSecurity Bootcamp](https://4geeksacademy.com/us/coding-bootcamps/cybersecurity).
+- Data: [SWAPI.tech](https://www.swapi.tech/), using its people, planets and vehicles endpoints.
+- Images: [breatheco-de/swapi-images](https://github.com/breatheco-de/swapi-images), loaded directly from `public/images/people`, `planets` and `vehicles`. This repository collects images from Wookieepedia; it is separate from the template and was selected as an external image source.
+- Image URLs are assembled in `src/utils/getEntityImage.js` using the category and SWAPI resource ID. Akabab is not used.
+
+External APIs and image hosts require internet access and may be temporarily unavailable. A successful build or lint check does not verify their live availability.
+
+## Credits
+
+Based on the 4Geeks Academy React advanced template. Exercise: [Star Wars Blog Reading List](https://github.com/breatheco-de/exercise-starwars-blog-reading-list).
